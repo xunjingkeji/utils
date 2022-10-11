@@ -7,7 +7,11 @@ const defaultCodeMap = {
   500: '服务器错误。',
   502: '网关错误。',
 }
-const $$onerror = function (err) {
+
+function $onSuccess (response) {
+  return response.data
+}
+const $onError = function (err) {
   console.error(err?.message || '服务端异常，请稍后再试！')
   throw err
 }
@@ -24,7 +28,7 @@ const $$onerror = function (err) {
 * @param {*} opts
 * @public
 */
-function createApi ({ onerror = $$onerror, codeMap = {}, ...options }) {
+function createApi ({ onError = $onError, codeMap = {}, ...options }) {
   codeMap = Object.assign(defaultCodeMap, codeMap) // eslint-disable-line no-unused-vars
   const instance = axios.create({
     baseURL: options.baseURL || '/',
@@ -43,7 +47,7 @@ function createApi ({ onerror = $$onerror, codeMap = {}, ...options }) {
     }),
     transformResponse: axios.defaults.transformResponse.concat(function (res) {
       // 先检查返回值是否正确
-      if (!res.success) {
+      if (res.code !== 200) {
         throw res
       }
 
@@ -63,20 +67,11 @@ function createApi ({ onerror = $$onerror, codeMap = {}, ...options }) {
     return config
   })
 
-  instance.interceptors.response.use($onSuccess, onerror)
+  instance.interceptors.response.use($onSuccess, onError)
 
   return instance
-
-  /**
-  *
-  * @param {*} params
-  * @private
-  */
-  function $onSuccess (response) {
-    return response.data
-  }
 }
 
-const api = createApi('/')
+const api = createApi({ baseURL: '/' })
 
 export { api, createApi }

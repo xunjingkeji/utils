@@ -6,8 +6,7 @@
 ## 使用
 ```
 // 项目新增 request.js
-import { createApi } from "./api"
-import { getHost } from "./env"
+import { createApi, getHost } from '@xunjing/utils'
 
 const onError = (err) => {
   // 这里放错误处理函数，以uni-app为例
