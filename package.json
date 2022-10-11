@@ -1,0 +1,20 @@
+{
+  "name": "@xunjing/utils",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "beta": "node scripts/beta-version.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xunjingkeji/utils.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xunjingkeji/utils/issues"
+  },
+  "homepage": "https://github.com/xunjingkeji/utils#readme"
+}
