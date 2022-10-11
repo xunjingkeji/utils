@@ -12,7 +12,7 @@ function $onSuccess (response) {
   return response.data
 }
 const $onError = function (err) {
-  console.error(err?.message || '服务端异常，请稍后再试！')
+  console.error((err && err.message) || '服务端异常，请稍后再试！')
   throw err
 }
 /**
