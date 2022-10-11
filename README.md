@@ -23,3 +23,9 @@ const api = createApi({ baseURL: getHost(), onError })
 export default api
 
 ```
+
+```
+// 使用和axios一样
+api.get('/getxxById', { params: { id } })
+api.post('/createProject', params)
+```
