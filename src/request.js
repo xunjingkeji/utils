@@ -36,7 +36,7 @@ function createApi ({ onError = $onError, codeMap = {}, ...options }) {
     headers: { Accept: '*/*' },
     withCredentials: true,
     validateStatus (status) {
-      if (status === 206) {
+      if (status === 401) {
         window.location.href = `/login?redirect=${window.location.href}`
         return false
       }
@@ -47,7 +47,7 @@ function createApi ({ onError = $onError, codeMap = {}, ...options }) {
     }),
     transformResponse: axios.defaults.transformResponse.concat(function (res) {
       // 先检查返回值是否正确
-      if (res.code !== 200) {
+      if (res.success !== true) {
         throw res
       }
 

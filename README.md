@@ -28,3 +28,9 @@ export default api
 api.get('/getxxById', { params: { id } })
 api.post('/createProject', params)
 ```
+## http状态码
+401登录过期，自动跳转到`/login`
+## 返回格式
+`msg`: 服务端返回信息  
+`data`: 返回数据  
+`success`: 业务请求是否成功，`!= true`时报错  
