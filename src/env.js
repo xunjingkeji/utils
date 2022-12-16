@@ -12,12 +12,15 @@ const getEnv = () => {
 const envs = {
   real: {
     BASE: '//1.116.178.22/',
+    GEOHUB: '//geohub.real4d.xyz/',
   },
   pre: {
     BASE: '//1.116.178.22/',
+    GEOHUB: '//geohub.real4d.xyz/',
   },
   dev: {
     BASE: '//1.116.178.22/',
+    GEOHUB: '//geohub.real4d.xyz/',
   },
 }
 
